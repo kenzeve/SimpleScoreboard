@@ -1,0 +1,10 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/kenzeve/SimpleScoreboard
+build-by-default: true
+branches:
+- main
+projects:
+  SimpleScoreboard:
+    path: ""
+    model: virion
+    type: library
+...
