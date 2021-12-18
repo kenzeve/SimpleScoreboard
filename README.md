@@ -1,3 +1,5 @@
+# SimpleScoreboard
+
 Simple PM4 scoreboard library for per-player use
 
 ## Create and send lines
