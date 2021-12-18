@@ -26,14 +26,13 @@ class Scoreboard{
             $this->remove();
         }
 
-        $pk = new SetDisplayObjectivePacket();
-        $pk->displaySlot = "sidebar";
-        $pk->objectiveName = self::OBJECTIVE_NAME;
-        $pk->displayName = $title;
-        $pk->criteriaName = "dummy";
-        $pk->sortOrder = 0;
-
-        $this->player->getNetworkSession()->sendDataPacket($pk);
+        $this->player->getNetworkSession()->sendDataPacket(SetDisplayObjectivePacket::create(
+            "sidebar",
+            self::OBJECTIVE_NAME,
+            $title,
+            "dummy",
+            0
+        ));
 
         $this->created = true;
     }
@@ -43,9 +42,9 @@ class Scoreboard{
             return;
         }
 
-        $pk = new RemoveObjectivePacket();
-        $pk->objectiveName = self::OBJECTIVE_NAME;
-        $this->player->getNetworkSession()->sendDataPacket($pk);
+        $this->player->getNetworkSession()->sendDataPacket(RemoveObjectivePacket::create(
+            self::OBJECTIVE_NAME
+        ));
 
         $this->created = false;
     }
@@ -66,10 +65,9 @@ class Scoreboard{
         $entry->score = $score;
         $entry->scoreboardId = $score;
 
-        $pk = new SetScorePacket();
-        $pk->type = $pk::TYPE_CHANGE;
-        $pk->entries[] = $entry;
-
-        $this->player->getNetworkSession()->sendDataPacket($pk);
+        $this->player->getNetworkSession()->sendDataPacket(SetScorePacket::create(
+            SetScorePacket::TYPE_CHANGE,
+            [$entry]
+        ));
     }
 }
