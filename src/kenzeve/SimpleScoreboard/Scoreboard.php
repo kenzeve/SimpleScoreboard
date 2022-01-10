@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace kenzeve;
+namespace kenzeve\SimpleScoreboard;
 
 use pocketmine\network\mcpe\protocol\RemoveObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
